@@ -14,12 +14,11 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 @Service
-@Profile("install")
+//@Profile("install")
 @Slf4j
 public class SqlDatabaseSchemaService implements DatabaseSchemaService {
 
     private static final String SQL_DIR = "sql";
-    private static final String UPGRADE_DIR = "upgrade";
     private static final String SCHEMA_SQL = "schema.sql";
 
     @Value("${install.data_dir}")

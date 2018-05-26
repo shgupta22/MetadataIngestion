@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @Service
-@Profile("install")
+//@Profile("install")
 @Slf4j
 public class MetadataServiceInstall {
 
@@ -23,12 +23,9 @@ public class MetadataServiceInstall {
     @Autowired
     private DatabaseSchemaService databaseSchemaService;
 
-    @Autowired
-    private ApplicationContext context;
-
     public void performInstall() {
         try {
-            log.info("Starting Tempus Installation...");
+            log.info("Starting Metadata Ingestion Service Installation...");
 
             if (this.dataDir == null) {
                 throw new RuntimeException("'install.data_dir' property should specified!");
@@ -41,10 +38,8 @@ public class MetadataServiceInstall {
 
             databaseSchemaService.createDatabaseSchema();
         } catch (Exception e) {
-            log.error("Unexpected error during Tempus installation!", e);
-            throw new MetadataInstallException("Unexpected error during Tempus installation!", e);
-        } finally {
-            SpringApplication.exit(context);
+            log.error("Unexpected error during Metadata Ingestion Service installation!", e);
+            throw new MetadataInstallException("Unexpected error during Metadata Ingestion Service installation!", e);
         }
     }
 }

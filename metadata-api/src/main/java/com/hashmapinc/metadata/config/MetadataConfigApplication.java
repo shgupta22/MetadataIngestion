@@ -1,8 +1,11 @@
 package com.hashmapinc.metadata.config;
 
+import com.hashmapinc.metadata.config.install.MetadataServiceInstall;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.Arrays;
@@ -11,12 +14,19 @@ import java.util.Arrays;
 @EnableAsync
 @EnableAutoConfiguration
 @SpringBootApplication
+@ComponentScan/*({
+        "com.hashmapinc.metadata.config.install"
+})*/
 public class MetadataConfigApplication {
     private static String SPRING_CONFIG_NAME_KEY = "--spring.config.name";
     private static String DEFAULT_SPRING_CONFIG_PARAM = SPRING_CONFIG_NAME_KEY + "=" + "metadata-api";
 
     public static void main(String[] args) {
-        SpringApplication.run(MetadataConfigApplication.class, updateArguments(args));
+        SpringApplication application = new SpringApplication(MetadataConfigApplication.class);
+//        application.setAdditionalProfiles("install");
+        ConfigurableApplicationContext context = application.run(updateArguments(args));
+
+        context.getBean(MetadataServiceInstall.class).performInstall();
     }
 
     private static String[] updateArguments(String[] args) {

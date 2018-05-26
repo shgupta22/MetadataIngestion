@@ -1,5 +1,4 @@
 package com.hashmapinc.metadata.config.service;
 
-public interface MetadataConfigService
-{
+public interface MetadataConfigService {
 }
