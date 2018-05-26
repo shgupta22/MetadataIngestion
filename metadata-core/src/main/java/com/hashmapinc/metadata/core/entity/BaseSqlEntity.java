@@ -1,5 +1,6 @@
 package com.hashmapinc.metadata.core.entity;
 
+import com.hashmapinc.metadata.core.constants.ModelConstants;
 import com.hashmapinc.metadata.core.entity.BaseEntity;
 import com.hashmapinc.metadata.core.util.UUIDConverter;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.util.UUID;
 public abstract class BaseSqlEntity<D> implements BaseEntity<D> {
 
     @Id
-    @Column(name = "id")
+    @Column(name = ModelConstants.ID_PROPERTY)
     protected String id;
 
     @Override

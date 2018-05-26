@@ -1,26 +1,24 @@
-package com.hashmapinc.metadata.core.source.jdbc;
+package com.hashmapinc.metadata.core.source.jdbc.model;
 
 import com.hashmapinc.metadata.core.source.Source;
 import com.hashmapinc.metadata.core.source.SourceType;
 
-public class JdbcSource extends Source {
+public class JdbcSource extends Source<JdbcSourceId> {
 
     private String dbUrl;
     private String username;
     private String password;
 
-    public JdbcSource(String dbUrl, String username, String password) {
-        super.setSourceType(SourceType.JDBC);
-        this.dbUrl = dbUrl;
-        this.username = username;
-        this.password = password;
-    }
-
     public JdbcSource() {
         super();
     }
 
+    public JdbcSource(JdbcSourceId id) {
+        super(id);
+    }
+
     public JdbcSource(JdbcSource jdbcSource) {
+        super(jdbcSource);
         this.setSourceType(jdbcSource.getSourceType());
         this.dbUrl = jdbcSource.dbUrl;
         this.username = jdbcSource.username;

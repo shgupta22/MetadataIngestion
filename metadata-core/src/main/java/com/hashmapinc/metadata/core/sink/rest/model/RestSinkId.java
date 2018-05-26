@@ -1,10 +1,9 @@
-package com.hashmapinc.metadata.core.sink.rest;
+package com.hashmapinc.metadata.core.sink.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.hashmapinc.metadata.core.data.id.UUIDBased;
 import com.hashmapinc.metadata.core.sink.SinkId;
-import com.hashmapinc.metadata.core.source.jdbc.JdbcSourceId;
 
 import java.util.UUID;
 
