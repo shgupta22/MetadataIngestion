@@ -14,16 +14,13 @@ import java.util.Arrays;
 @EnableAsync
 @EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan/*({
-        "com.hashmapinc.metadata.config.install"
-})*/
+@ComponentScan
 public class MetadataConfigApplication {
     private static String SPRING_CONFIG_NAME_KEY = "--spring.config.name";
     private static String DEFAULT_SPRING_CONFIG_PARAM = SPRING_CONFIG_NAME_KEY + "=" + "metadata-api";
 
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(MetadataConfigApplication.class);
-//        application.setAdditionalProfiles("install");
         ConfigurableApplicationContext context = application.run(updateArguments(args));
 
         context.getBean(MetadataServiceInstall.class).performInstall();

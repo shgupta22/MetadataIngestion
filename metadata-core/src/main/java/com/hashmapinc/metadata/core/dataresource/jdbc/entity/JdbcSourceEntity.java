@@ -1,10 +1,12 @@
-package com.hashmapinc.metadata.core.source.jdbc.entity;
+package com.hashmapinc.metadata.core.dataresource.jdbc.entity;
 
+import com.hashmapinc.metadata.config.model.MetadataConfigId;
 import com.hashmapinc.metadata.core.constants.ModelConstants;
 import com.hashmapinc.metadata.core.entity.BaseSqlEntity;
 import com.hashmapinc.metadata.core.source.SourceType;
-import com.hashmapinc.metadata.core.source.jdbc.model.JdbcSource;
-import com.hashmapinc.metadata.core.source.jdbc.model.JdbcSourceId;
+import com.hashmapinc.metadata.core.dataresource.jdbc.model.JdbcSource;
+import com.hashmapinc.metadata.core.dataresource.jdbc.model.JdbcSourceId;
+import com.hashmapinc.metadata.core.util.UUIDConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,6 +25,9 @@ public class JdbcSourceEntity extends BaseSqlEntity<JdbcSource> {
     @Column(name = ModelConstants.SOURCE_TYPE)
     private SourceType sourceType;
 
+    @Column(name = ModelConstants.JDBC_SOURCE_METADATA_CONFIG_ID)
+    private String metadataConfigId;
+
     @Column(name = ModelConstants.JDBC_SOURCE_DBURL)
     private String dbUrl;
 
@@ -40,6 +45,9 @@ public class JdbcSourceEntity extends BaseSqlEntity<JdbcSource> {
         if (jdbcSource.getId() != null) {
             this.setId(jdbcSource.getId().getId());
         }
+        if (jdbcSource.getMetadataConfigId() != null) {
+            this.metadataConfigId = UUIDConverter.fromTimeUUID(jdbcSource.getMetadataConfigId().getId());
+        }
 
         this.sourceType = jdbcSource.getSourceType();
         this.dbUrl = jdbcSource.getDbUrl();
@@ -50,6 +58,9 @@ public class JdbcSourceEntity extends BaseSqlEntity<JdbcSource> {
     @Override
     public JdbcSource toData() {
         JdbcSource jdbcSource = new JdbcSource(new JdbcSourceId(getId()));
+        if (metadataConfigId != null) {
+            jdbcSource.setMetadataConfigId(new MetadataConfigId(UUIDConverter.fromString(metadataConfigId)));
+        }
         jdbcSource.setSourceType(sourceType);
         jdbcSource.setDbUrl(dbUrl);
         jdbcSource.setUsername(username);

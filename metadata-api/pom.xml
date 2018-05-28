@@ -18,6 +18,8 @@
         <hsqldb.version>2.4.0</hsqldb.version>
         <spring-data-redis.version>1.8.10.RELEASE</spring-data-redis.version>
         <lombok.version>1.16.18</lombok.version>
+        <spring-data-commons.version>1.13.8.RELEASE</spring-data-commons.version>
+        <spring-data-jpa.version>1.11.8.RELEASE</spring-data-jpa.version>
     </properties>
 
 
@@ -42,6 +44,18 @@
             <artifactId>persistence-api</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>${spring-data-commons.version}</version>
+        </dependency>
+
+    <!--    <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>-->
+
 
 
 

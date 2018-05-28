@@ -27,27 +27,18 @@ public class ModelConstants {
     public static final String METADATA_CONFIG_TRIGGER_SCHEDULE = "trigger_schdl";
 
     /**
-     * Source Constants
-     */
-    public static final String SOURCE_TYPE = "source_type";
-    public static final String SOURCE_NAME = "source_name";
-
-    /**
      * JDBC Source Constants
      */
-    public static final String JDBC_SOURCE_TABLE_NAME = "jdbc_source";
-    public static final String JDBC_SOURCE_DBURL = "dburl";
-    public static final String JDBC_SOURCE_USERNAME = "username";
-    public static final String JDBC_SOURCE_PASSWORD = "password";
-
-    /**
-     * Sink Constants
-     */
-    public static final String SINK_TYPE = "sink_type";
-    public static final String SINK_NAME = "sink_name";
+    public static final String JDBC_TABLE_NAME = "jdbc";
+    public static final String JDBC_DBURL = "db_url";
+    public static final String JDBC_USERNAME = "username";
+    public static final String JDBC_PASSWORD = "password";
 
     /**
      * REST Sink Constants
      */
     public static final String REST_SINK_TABLE_NAME = "rest_sink";
+    public static final String REST_URL = "url";
+    public static final String REST_USERNAME = "username";
+    public static final String REST_PASSWORD = "password";
 }

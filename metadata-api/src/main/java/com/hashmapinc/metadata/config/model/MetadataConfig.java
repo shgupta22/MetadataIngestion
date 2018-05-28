@@ -1,8 +1,7 @@
 package com.hashmapinc.metadata.config.model;
 
 import com.hashmapinc.metadata.core.data.BaseData;
-import com.hashmapinc.metadata.core.sink.SinkId;
-import com.hashmapinc.metadata.core.source.SourceId;
+import com.hashmapinc.metadata.core.datalake.DataLake;
 import com.hashmapinc.metadata.core.trigger.TriggerType;
 import lombok.EqualsAndHashCode;
 
@@ -10,8 +9,8 @@ import lombok.EqualsAndHashCode;
 public class MetadataConfig extends BaseData<MetadataConfigId> {
 
     private String name;
-    private SourceId sourceId;
-    private SinkId sinkId;
+    private DataLake source;
+    private DataLake sink;
     private TriggerType triggerType;
     private String triggerSchedule;
 
@@ -26,8 +25,8 @@ public class MetadataConfig extends BaseData<MetadataConfigId> {
     public MetadataConfig(MetadataConfig metadataConfig) {
         super(metadataConfig);
         this.name = metadataConfig.name;
-        this.sourceId = metadataConfig.sourceId;
-        this.sinkId = metadataConfig.sinkId;
+        this.source = metadataConfig.source;
+        this.sink = metadataConfig.sink;
         this.triggerType = metadataConfig.triggerType;
         this.triggerSchedule = metadataConfig.triggerSchedule;
     }
@@ -40,20 +39,20 @@ public class MetadataConfig extends BaseData<MetadataConfigId> {
         this.name = name;
     }
 
-    public SourceId getSourceId() {
-        return sourceId;
+    public DataLake getSource() {
+        return source;
     }
 
-    public void setSourceId(SourceId sourceId) {
-        this.sourceId = sourceId;
+    public void setSource(DataLake source) {
+        this.source = source;
     }
 
-    public SinkId getSinkId() {
-        return sinkId;
+    public DataLake getSink() {
+        return sink;
     }
 
-    public void setSinkId(SinkId sinkId) {
-        this.sinkId = sinkId;
+    public void setSink(DataLake sink) {
+        this.sink = sink;
     }
 
     public TriggerType getTriggerType() {
@@ -76,8 +75,8 @@ public class MetadataConfig extends BaseData<MetadataConfigId> {
     public String toString() {
         return "MetadataConfig{" +
                 "name=" + name +
-                ", sourceId=" + sourceId +
-                ", sinkId=" + sinkId +
+                ", source=" + source +
+                ", sink=" + sink +
                 ", triggerType=" + triggerType +
                 ", triggerSchedule=" + triggerSchedule +
                 '}';

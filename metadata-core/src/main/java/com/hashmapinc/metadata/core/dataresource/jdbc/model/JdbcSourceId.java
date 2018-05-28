@@ -1,4 +1,4 @@
-package com.hashmapinc.metadata.core.source.jdbc.model;
+package com.hashmapinc.metadata.core.dataresource.jdbc.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -3,10 +3,12 @@ package com.hashmapinc.metadata.config.entity;
 import com.hashmapinc.metadata.config.model.MetadataConfig;
 import com.hashmapinc.metadata.config.model.MetadataConfigId;
 import com.hashmapinc.metadata.core.constants.ModelConstants;
+import com.hashmapinc.metadata.core.data.id.UUIDBased;
+import com.hashmapinc.metadata.core.datalake.DataLake;
 import com.hashmapinc.metadata.core.entity.BaseSqlEntity;
-import com.hashmapinc.metadata.core.sink.SinkId;
-import com.hashmapinc.metadata.core.source.SourceId;
+import com.hashmapinc.metadata.core.source.Source;
 import com.hashmapinc.metadata.core.trigger.TriggerType;
+import com.hashmapinc.metadata.core.util.UUIDConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,10 +24,10 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
     private String name;
 
     @Column(name = ModelConstants.METADATA_CONFIG_SOURCE_ID)
-    private SourceId sourceId;
+    private DataLake source;
 
-    @Column(name = ModelConstants.METADATA_CONFIG_SINK_ID)
-    private SinkId sinkId;
+    @Column(name =  ModelConstants.METADATA_CONFIG_SINK_ID)
+    private DataLake sink;
 
     @Enumerated(EnumType.STRING)
     @Column(name = ModelConstants.METADATA_CONFIG_TRIGGER_TYPE)
@@ -42,10 +44,14 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
         if (metadataConfig.getId() != null) {
             this.setId(metadataConfig.getId().getId());
         }
+        if (metadataConfig.getSource().getId() != null) {
+            this.sourceId = UUIDConverter.fromTimeUUID(metadataConfig.getSource().getId().getId());
+        }
+        if (metadataConfig.getSink().getId() != null) {
+            this.sinkId = UUIDConverter.fromTimeUUID(metadataConfig.getSink().getId().getId());
+        }
 
         this.name = metadataConfig.getName();
-        this.sourceId = metadataConfig.getSourceId();
-        this.sinkId = metadataConfig.getSinkId();
         this.triggerType = metadataConfig.getTriggerType();
         this.triggerSchedule = metadataConfig.getTriggerSchedule();
     }
@@ -54,8 +60,17 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
     public MetadataConfig toData() {
         MetadataConfig metadataConfig = new MetadataConfig(new MetadataConfigId(getId()));
         metadataConfig.setName(name);
-        metadataConfig.setSourceId(sourceId);
-        metadataConfig.setSinkId(sinkId);
+        if (sourceId != null) {
+            metadataConfig.setSource(new Source() {
+                @Override
+                public void setId(UUIDBased id) {
+                    super.setId(id);
+                }
+            });
+        }
+        if (sinkId != null) {
+            metadataConfig.setSink();
+        }
         metadataConfig.setTriggerType(triggerType);
         metadataConfig.setTriggerSchedule(triggerSchedule);
         return metadataConfig;

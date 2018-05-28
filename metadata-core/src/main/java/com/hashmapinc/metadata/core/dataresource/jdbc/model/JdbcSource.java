@@ -1,9 +1,9 @@
-package com.hashmapinc.metadata.core.source.jdbc.model;
+package com.hashmapinc.metadata.core.dataresource.jdbc.model;
 
-import com.hashmapinc.metadata.core.source.Source;
-import com.hashmapinc.metadata.core.source.SourceType;
+import com.hashmapinc.metadata.core.data.BaseData;
+import com.hashmapinc.metadata.core.dataresource.DataResource;
 
-public class JdbcSource extends Source<JdbcSourceId> {
+public class JdbcSource extends BaseData<JdbcSourceId> implements DataResource {
 
     private String dbUrl;
     private String username;
@@ -18,8 +18,6 @@ public class JdbcSource extends Source<JdbcSourceId> {
     }
 
     public JdbcSource(JdbcSource jdbcSource) {
-        super(jdbcSource);
-        this.setSourceType(jdbcSource.getSourceType());
         this.dbUrl = jdbcSource.dbUrl;
         this.username = jdbcSource.username;
         this.password = jdbcSource.password;
@@ -47,6 +45,16 @@ public class JdbcSource extends Source<JdbcSourceId> {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public void push() {
+
+    }
+
+    @Override
+    public void pull() {
+
     }
 
     @Override

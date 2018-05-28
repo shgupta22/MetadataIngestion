@@ -1,4 +1,4 @@
-package com.hashmapinc.metadata.core.sink.rest.model;
+package com.hashmapinc.metadata.core.dataresource.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
