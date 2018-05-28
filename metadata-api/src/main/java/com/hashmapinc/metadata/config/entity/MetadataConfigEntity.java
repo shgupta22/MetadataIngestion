@@ -23,9 +23,11 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
     @Column(name = ModelConstants.METADATA_CONFIG_NAME)
     private String name;
 
+//    @OneToOne(cascade = CascadeType.ALL)
     @Column(name = ModelConstants.METADATA_CONFIG_SOURCE_ID)
     private DataLake source;
 
+//    @OneToOne(cascade = CascadeType.ALL)
     @Column(name =  ModelConstants.METADATA_CONFIG_SINK_ID)
     private DataLake sink;
 
@@ -44,14 +46,10 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
         if (metadataConfig.getId() != null) {
             this.setId(metadataConfig.getId().getId());
         }
-        if (metadataConfig.getSource().getId() != null) {
-            this.sourceId = UUIDConverter.fromTimeUUID(metadataConfig.getSource().getId().getId());
-        }
-        if (metadataConfig.getSink().getId() != null) {
-            this.sinkId = UUIDConverter.fromTimeUUID(metadataConfig.getSink().getId().getId());
-        }
 
         this.name = metadataConfig.getName();
+        this.source = metadataConfig.getSource();
+        this.sink = metadataConfig.getSink();
         this.triggerType = metadataConfig.getTriggerType();
         this.triggerSchedule = metadataConfig.getTriggerSchedule();
     }
@@ -60,17 +58,8 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
     public MetadataConfig toData() {
         MetadataConfig metadataConfig = new MetadataConfig(new MetadataConfigId(getId()));
         metadataConfig.setName(name);
-        if (sourceId != null) {
-            metadataConfig.setSource(new Source() {
-                @Override
-                public void setId(UUIDBased id) {
-                    super.setId(id);
-                }
-            });
-        }
-        if (sinkId != null) {
-            metadataConfig.setSink();
-        }
+        metadataConfig.setSource(source);
+        metadataConfig.setSink(sink);
         metadataConfig.setTriggerType(triggerType);
         metadataConfig.setTriggerSchedule(triggerSchedule);
         return metadataConfig;

@@ -7,16 +7,16 @@ import com.hashmapinc.metadata.core.sink.SinkId;
 
 import java.util.UUID;
 
-public class RestSinkId extends UUIDBased implements SinkId {
+public class RestResourceId extends UUIDBased implements SinkId {
 
     private static final long serialVersionUID = 1L;
 
     @JsonCreator
-    public RestSinkId(@JsonProperty("id") UUID id) {
+    public RestResourceId(@JsonProperty("id") UUID id) {
         super(id);
     }
 
-    public static RestSinkId fromString(String restSinkId) {
-        return new RestSinkId(UUID.fromString(restSinkId));
+    public static RestResourceId fromString(String restSinkId) {
+        return new RestResourceId(UUID.fromString(restSinkId));
     }
 }

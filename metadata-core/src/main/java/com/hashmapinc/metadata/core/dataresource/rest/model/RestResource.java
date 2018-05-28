@@ -3,24 +3,24 @@ package com.hashmapinc.metadata.core.dataresource.rest.model;
 import com.hashmapinc.metadata.core.dataresource.DataResource;
 import com.hashmapinc.metadata.core.sink.Sink;
 
-public class RestSink extends Sink<RestSinkId> implements DataResource {
+public class RestResource extends Sink<RestResourceId> implements DataResource {
 
     private String dbUrl;
     private String username;
     private String password;
 
-    public RestSink() {
+    public RestResource() {
         super();
     }
 
-    public RestSink(RestSinkId id) {
+    public RestResource(RestResourceId id) {
         super(id);
     }
 
-    public RestSink(RestSink restSink) {
-        this.dbUrl = restSink.dbUrl;
-        this.username = restSink.username;
-        this.password = restSink.password;
+    public RestResource(RestResource restResource) {
+        this.dbUrl = restResource.dbUrl;
+        this.username = restResource.username;
+        this.password = restResource.password;
     }
 
     public String getDbUrl() {
@@ -59,7 +59,7 @@ public class RestSink extends Sink<RestSinkId> implements DataResource {
 
     @Override
     public String toString() {
-        return "RestSink{" +
+        return "RestResource{" +
                 "dbUrl=" + dbUrl +
                 ", username=" + username +
                 ", password=" + password +

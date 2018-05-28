@@ -7,16 +7,16 @@ import com.hashmapinc.metadata.core.source.SourceId;
 
 import java.util.UUID;
 
-public class JdbcSourceId extends UUIDBased implements SourceId {
+public class JdbcResourceId extends UUIDBased implements SourceId {
 
     private static final long serialVersionUID = 1L;
 
     @JsonCreator
-    public JdbcSourceId(@JsonProperty("id") UUID id) {
+    public JdbcResourceId(@JsonProperty("id") UUID id) {
         super(id);
     }
 
-    public static JdbcSourceId fromString(String jdbcSourceId) {
-        return new JdbcSourceId(UUID.fromString(jdbcSourceId));
+    public static JdbcResourceId fromString(String jdbcSourceId) {
+        return new JdbcResourceId(UUID.fromString(jdbcSourceId));
     }
 }

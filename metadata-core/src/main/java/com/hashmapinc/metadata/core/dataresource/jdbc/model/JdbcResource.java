@@ -3,24 +3,24 @@ package com.hashmapinc.metadata.core.dataresource.jdbc.model;
 import com.hashmapinc.metadata.core.data.BaseData;
 import com.hashmapinc.metadata.core.dataresource.DataResource;
 
-public class JdbcSource extends BaseData<JdbcSourceId> implements DataResource {
+public class JdbcResource extends BaseData<JdbcResourceId> implements DataResource {
 
     private String dbUrl;
     private String username;
     private String password;
 
-    public JdbcSource() {
+    public JdbcResource() {
         super();
     }
 
-    public JdbcSource(JdbcSourceId id) {
+    public JdbcResource(JdbcResourceId id) {
         super(id);
     }
 
-    public JdbcSource(JdbcSource jdbcSource) {
-        this.dbUrl = jdbcSource.dbUrl;
-        this.username = jdbcSource.username;
-        this.password = jdbcSource.password;
+    public JdbcResource(JdbcResource jdbcResource) {
+        this.dbUrl = jdbcResource.dbUrl;
+        this.username = jdbcResource.username;
+        this.password = jdbcResource.password;
     }
 
     public String getDbUrl() {
@@ -59,7 +59,7 @@ public class JdbcSource extends BaseData<JdbcSourceId> implements DataResource {
 
     @Override
     public String toString() {
-        return "JdbcSource{" +
+        return "JdbcResource{" +
                 "dbUrl=" + dbUrl +
                 ", username=" + username +
                 ", password=" + password +
