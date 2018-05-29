@@ -6,12 +6,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.Arrays;
 
 
-@EnableAsync
 @EnableAutoConfiguration
 @SpringBootApplication
 @ComponentScan
@@ -24,6 +23,7 @@ public class MetadataConfigApplication {
         ConfigurableApplicationContext context = application.run(updateArguments(args));
 
         context.getBean(MetadataServiceInstall.class).performInstall();
+//        SpringApplication.run(MetadataConfigApplication.class, args);
     }
 
     private static String[] updateArguments(String[] args) {

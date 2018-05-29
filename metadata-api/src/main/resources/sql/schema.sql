@@ -20,5 +20,3 @@ CREATE TABLE IF NOT EXISTS rest (
     username varchar NOT NULL,
     password  varchar NOT NULL
 );
-
-

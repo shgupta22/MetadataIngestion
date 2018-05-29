@@ -35,7 +35,11 @@ public class SqlDatabaseSchemaService implements DatabaseSchemaService {
     public void createDatabaseSchema() throws Exception {
         log.info("Installing SQL DataBase schema...");
 
+        log.info("dataDir : {}, dbUrl : {}, dbUserName : {}, dbPassword : {}", dataDir, dbUrl, dbUserName, dbPassword);
+
         Path schemaFile = Paths.get(this.dataDir, SQL_DIR, SCHEMA_SQL);
+
+        log.info("SchemaFile : {}", schemaFile.toString());
 
         try (Connection conn = DriverManager.getConnection(dbUrl, dbUserName, dbPassword);
              Statement stmt = conn.createStatement()) {

@@ -2,6 +2,7 @@ package com.hashmapinc.metadata.config.model;
 
 import com.hashmapinc.metadata.core.data.BaseData;
 import com.hashmapinc.metadata.core.datalake.DataLake;
+import com.hashmapinc.metadata.core.dataresource.DataResource;
 import com.hashmapinc.metadata.core.trigger.TriggerType;
 import lombok.EqualsAndHashCode;
 
@@ -9,8 +10,8 @@ import lombok.EqualsAndHashCode;
 public class MetadataConfig extends BaseData<MetadataConfigId> {
 
     private String name;
-    private DataLake source;
-    private DataLake sink;
+    private DataResource source;
+    private DataResource sink;
     private TriggerType triggerType;
     private String triggerSchedule;
 
@@ -39,19 +40,19 @@ public class MetadataConfig extends BaseData<MetadataConfigId> {
         this.name = name;
     }
 
-    public DataLake getSource() {
+    public DataResource getSource() {
         return source;
     }
 
-    public void setSource(DataLake source) {
+    public void setSource(DataResource source) {
         this.source = source;
     }
 
-    public DataLake getSink() {
+    public DataResource getSink() {
         return sink;
     }
 
-    public void setSink(DataLake sink) {
+    public void setSink(DataResource sink) {
         this.sink = sink;
     }
 

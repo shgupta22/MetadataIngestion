@@ -1,9 +1,11 @@
 package com.hashmapinc.metadata.core.dataresource.rest.model;
 
+import com.hashmapinc.metadata.core.data.BaseData;
 import com.hashmapinc.metadata.core.dataresource.DataResource;
+import com.hashmapinc.metadata.core.dataresource.jdbc.model.JdbcResourceId;
 import com.hashmapinc.metadata.core.sink.Sink;
 
-public class RestResource extends Sink<RestResourceId> implements DataResource {
+public class RestResource extends BaseData<RestResourceId> implements DataResource {
 
     private String dbUrl;
     private String username;

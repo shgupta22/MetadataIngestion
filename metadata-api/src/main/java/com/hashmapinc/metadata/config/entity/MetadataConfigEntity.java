@@ -5,6 +5,7 @@ import com.hashmapinc.metadata.config.model.MetadataConfigId;
 import com.hashmapinc.metadata.core.constants.ModelConstants;
 import com.hashmapinc.metadata.core.data.id.UUIDBased;
 import com.hashmapinc.metadata.core.datalake.DataLake;
+import com.hashmapinc.metadata.core.dataresource.DataResource;
 import com.hashmapinc.metadata.core.entity.BaseSqlEntity;
 import com.hashmapinc.metadata.core.source.Source;
 import com.hashmapinc.metadata.core.trigger.TriggerType;
@@ -23,13 +24,11 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
     @Column(name = ModelConstants.METADATA_CONFIG_NAME)
     private String name;
 
-//    @OneToOne(cascade = CascadeType.ALL)
     @Column(name = ModelConstants.METADATA_CONFIG_SOURCE_ID)
-    private DataLake source;
+    private DataResource source;
 
-//    @OneToOne(cascade = CascadeType.ALL)
     @Column(name =  ModelConstants.METADATA_CONFIG_SINK_ID)
-    private DataLake sink;
+    private DataResource sink;
 
     @Enumerated(EnumType.STRING)
     @Column(name = ModelConstants.METADATA_CONFIG_TRIGGER_TYPE)

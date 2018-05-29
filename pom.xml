@@ -15,7 +15,6 @@
 
     <properties>
         <main.dir>${basedir}</main.dir>
-        <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <hsqldb.version>2.4.0</hsqldb.version>
         <spring-data-redis.version>1.8.10.RELEASE</spring-data-redis.version>
@@ -24,7 +23,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${spring-boot.version}</version>
+        <version>1.5.9.RELEASE</version>
     </parent>
 
     <build>
