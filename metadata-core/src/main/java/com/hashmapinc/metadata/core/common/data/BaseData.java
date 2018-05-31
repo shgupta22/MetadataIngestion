@@ -9,7 +9,7 @@ public abstract class BaseData<I extends UUIDBased> extends IdBased<I> implement
 
     private static final long serialVersionUID = 5422817607129962637L;
 
-//    protected long createdTime;
+    protected long createdTime;
 
     public BaseData() {
         super();
@@ -21,22 +21,22 @@ public abstract class BaseData<I extends UUIDBased> extends IdBased<I> implement
 
     public BaseData(BaseData<I> data) {
         super(data.getId());
-//        this.createdTime = data.getCreatedTime();
+        this.createdTime = data.getCreatedTime();
     }
 
-//    public long getCreatedTime() {
-//        return createdTime;
-//    }
+    public long getCreatedTime() {
+        return createdTime;
+    }
 
-//    public void setCreatedTime(long createdTime) {
-//        this.createdTime = createdTime;
-//    }
+    public void setCreatedTime(long createdTime) {
+        this.createdTime = createdTime;
+    }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-//        result = prime * result + (int) (createdTime ^ (createdTime >>> 32));
+        result = prime * result + (int) (createdTime ^ (createdTime >>> 32));
         return result;
     }
 
@@ -50,8 +50,8 @@ public abstract class BaseData<I extends UUIDBased> extends IdBased<I> implement
         if (getClass() != obj.getClass())
             return false;
         BaseData other = (BaseData) obj;
-//        if (createdTime != other.createdTime)
-//            return false;
+        if (createdTime != other.createdTime)
+            return false;
         return true;
     }
 
@@ -59,7 +59,7 @@ public abstract class BaseData<I extends UUIDBased> extends IdBased<I> implement
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("BaseData [createdTime=");
-//        builder.append(createdTime);
+        builder.append(createdTime);
         builder.append(", id=");
         builder.append(id);
         builder.append("]");
