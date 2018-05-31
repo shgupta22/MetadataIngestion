@@ -3,6 +3,7 @@ package com.hashmapinc.metadata.config.dao;
 import com.hashmapinc.metadata.config.entity.MetadataConfigEntity;
 import com.hashmapinc.metadata.config.model.MetadataConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import static com.hashmapinc.metadata.core.util.UUIDConverter.fromTimeUUID;
 
 //TODO: write the Dao utils having generic methods
 //TODO: See @Transactional functionality
+@Component
 public class MetadataConfigDaoImpl implements MetadataConfigDao {
 
     @Autowired
