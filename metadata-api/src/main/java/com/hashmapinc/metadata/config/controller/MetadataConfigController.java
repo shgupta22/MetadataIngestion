@@ -25,7 +25,7 @@ public class MetadataConfigController {
     @RequestMapping(value = "/metaconfig/{id}", method = RequestMethod.GET)
     public MetadataConfig getMetadataConfig(@PathVariable String id){
         MetadataConfigId  metadataConfigId =  new MetadataConfigId(UUID.fromString(id));
-        return metadataConfigService.findMetaDataConfigById(metadataConfigId);
+        return metadataConfigService.findMetadataConfigById(metadataConfigId);
     }
 
     @RequestMapping(value = "/metaconfig/{id}", method = RequestMethod.DELETE)
