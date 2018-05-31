@@ -96,6 +96,7 @@ public class MetadataConfigEntity extends BaseSqlEntity<MetadataConfig> {
             restResource.setUrl(((RestResourceEntity) dataResourceEntity).getUrl());
             restResource.setUsername(((RestResourceEntity) dataResourceEntity).getUsername());
             restResource.setPassword(((RestResourceEntity) dataResourceEntity).getPassword());
+            return restResource;
         }
         return null;
     }
