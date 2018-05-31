@@ -1,46 +1,46 @@
-//package com.hashmapinc.metadata.config.dao;
-//
-//import com.hashmapinc.metadata.config.model.MetadataConfig;
-//import com.hashmapinc.metadata.core.util.UUIDConverter;
-//import org.springframework.beans.factory.annotation.Autowired;
-//
-//import java.util.List;
-//import java.util.Optional;
-//import java.util.UUID;
-//
-//public class MetadataConfigDaoImpl implements MetadataConfigDao {
-//
-//    @Autowired
-//    private MetadataConfigRepository metadataConfigRepository;
-//
-//    @Override
-//    public MetadataConfig save(MetadataConfig metadataConfig) {
-//
-//        return metadataConfigRepository.save(metadataConfig);
-//    }
-//
-//    @Override
-//    public Optional<MetadataConfig> findMetadataConfigById(UUID id) {
-//        return Optional.of(metadataConfigRepository.findOne(UUIDConverter.fromTimeUUID(id)));
-//    }
-//
-//    @Override
-//    public Optional<MetadataConfig> findMetadataConfigByIdAndName(UUID id, String name) {
-//        return null;
-//    }
-//
-//    @Override
-//    public Optional<MetadataConfig> findMetadataConfigBySourceId(UUID sourceId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public Optional<MetadataConfig> findMetadataConfigBySinkId(UUID sinkId) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<MetadataConfig> find() {
-//        return null;
-//    }
-//}
+package com.hashmapinc.metadata.config.dao;
+
+import com.hashmapinc.metadata.config.entity.MetadataConfigEntity;
+import com.hashmapinc.metadata.config.model.MetadataConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import static com.hashmapinc.metadata.core.util.UUIDConverter.fromTimeUUID;
+
+//TODO: write the Dao utils having generic methods
+//TODO: See @Transactional functionality
+public class MetadataConfigDaoImpl implements MetadataConfigDao {
+
+    @Autowired
+    private MetadataConfigRepository metadataConfigRepository;
+
+    @Override
+    @Transactional
+    public MetadataConfig save(MetadataConfig metadataConfig) {
+        return metadataConfigRepository.save(new MetadataConfigEntity(metadataConfig)).toData();
+    }
+
+    @Override
+    public Optional<MetadataConfig> findById(UUID id) {
+        String key = fromTimeUUID(id);
+        return Optional.of(metadataConfigRepository.findOne(key).toData());
+    }
+
+    @Override
+    public List<MetadataConfig> find() {
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public boolean removeById(UUID id){
+        String key = fromTimeUUID(id);
+        metadataConfigRepository.delete(key);
+        return metadataConfigRepository.findOne(key) == null;
+    }
+
+}
