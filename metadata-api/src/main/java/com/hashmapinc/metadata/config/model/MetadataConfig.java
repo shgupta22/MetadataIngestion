@@ -1,8 +1,7 @@
 package com.hashmapinc.metadata.config.model;
 
-import com.hashmapinc.metadata.core.data.BaseData;
-import com.hashmapinc.metadata.core.datalake.DataLake;
-import com.hashmapinc.metadata.core.dataresource.DataResource;
+import com.hashmapinc.metadata.core.common.data.BaseData;
+import com.hashmapinc.metadata.core.data.resource.DataResource;
 import com.hashmapinc.metadata.core.trigger.TriggerType;
 import lombok.EqualsAndHashCode;
 

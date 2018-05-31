@@ -1,4 +1,4 @@
-package com.hashmapinc.metadata.config.model;
+package com.hashmapinc.metadata.core.data.resource.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,16 +6,16 @@ import com.hashmapinc.metadata.core.common.data.id.UUIDBased;
 
 import java.util.UUID;
 
-public class MetadataConfigId extends UUIDBased {
+public class RestResourceId extends UUIDBased {
 
     private static final long serialVersionUID = 1L;
 
     @JsonCreator
-    public MetadataConfigId(@JsonProperty("id") UUID id) {
+    public RestResourceId(@JsonProperty("id") UUID id) {
         super(id);
     }
 
-    public static MetadataConfigId fromString(String metadataConfigId) {
-        return new MetadataConfigId(UUID.fromString(metadataConfigId));
+    public static RestResourceId fromString(String restSinkId) {
+        return new RestResourceId(UUID.fromString(restSinkId));
     }
 }
